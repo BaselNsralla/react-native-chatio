@@ -4,7 +4,8 @@ import { View } from 'react-native-animatable';
 import PropTypes from 'prop-types';
 import { GiftedChat } from 'react-native-gifted-chat';
 import NavigationBar from './NavigationBar/NavigationBar';
-
+const ImagePicker = require('react-native-image-picker')
+const uuidv1 = require('uuid/v1');
 const { height, width } = Dimensions.get('window');
 const totalSize = num => (Math.sqrt((height * height) + (width * width)) * num) / 100;
 
@@ -58,6 +59,7 @@ export default class Chat extends React.Component {
           _id: message.id,
           createdAt: message.timestamp,
           user: { id: message.author },
+          image: message.image ? message.image : null
         }, ...this.state.messages],
       });
     } else {
@@ -67,6 +69,7 @@ export default class Chat extends React.Component {
           _id: message._id,
           createdAt: message.createdAt,
           user: message.user,
+          image: message.image ? message.image : null
         }, ...this.state.messages],
       });
     }
@@ -77,7 +80,7 @@ export default class Chat extends React.Component {
   };
 
   handleSend = (messages) => {
-    GLOBAL.customerSDK.sendMessage(this.state.chatId, messages[0]);
+    messages[0].image ? GLOBAL.customerSDK.sendFile(this.state.chatId, {file: { uri: messages[0].image, name: 'photo.jpg'}}) : GLOBAL.customerSDK.sendMessage(this.state.chatId, messages[0])
     this.addMessage(messages[0]);
   };
 
@@ -126,6 +129,7 @@ export default class Chat extends React.Component {
             onSend={this.handleSend}
             renderAvatar={null}
             onInputTextChanged={this.handleInputTextChange}
+            onPressActionButton={this.handleImagePicking.bind(this)}
             user={{
               _id: 1,
             }}
@@ -135,6 +139,38 @@ export default class Chat extends React.Component {
       );
     }
     return null;
+  }
+  generateImageMessage(uri) {
+    const _id = uuidv1()
+    const message = {
+     text: '',
+     _id: _id,
+     timestamp: Date.now(),
+     contentType: 'image/jpeg',
+     user: { _id : 1},
+     image: uri
+    }
+    return message
+  }
+  handleImagePicking () {
+      var options = {
+      title: 'Select Avatar',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images'
+      }
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.error) {
+        console.warn(response.error)
+      }
+      else {
+        let source = { uri: response.uri };
+        const imageMessage = this.generateImageMessage(response.uri)
+        console.log(imageMessage)
+        this.handleSend([imageMessage])
+      }
+    });
   }
 }
 
