@@ -167,7 +167,6 @@ export default class Chat extends React.Component {
       else {
         let source = { uri: response.uri };
         const imageMessage = this.generateImageMessage(response.uri)
-        console.log(imageMessage)
         this.handleSend([imageMessage])
       }
     });

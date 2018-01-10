@@ -1,43 +1,15 @@
 {
-  "_from": "git+https://github.com/BaselNsralla/react-native-chatio.git",
-  "_id": "react-native-chatio@1.0.12",
-  "_inBundle": false,
-  "_integrity": "sha1-7Iw74VSWMxXt2K8Qji9Fv3rnTNA=",
-  "_location": "/react-native-chatio",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "git",
-    "raw": "git+https://github.com/BaselNsralla/react-native-chatio.git",
-    "rawSpec": "git+https://github.com/BaselNsralla/react-native-chatio.git",
-    "saveSpec": "git+https://github.com/BaselNsralla/react-native-chatio.git",
-    "fetchSpec": "https://github.com/BaselNsralla/react-native-chatio.git",
-    "gitCommittish": "master"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "git+https://github.com/BaselNsralla/react-native-chatio.git#7a794f740e4ada89bb19ea9db1d95acab1236e3e",
-  "_spec": "git+https://github.com/BaselNsralla/react-native-chatio.git",
-  "_where": "/Users/basel/chatio-fork",
-  "author": {
-    "name": "Venits"
-  },
-  "bugs": {
-    "url": "https://github.com/livechat/react-native-chatio/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "@livechat/chat.io-customer-sdk": "^0.7.0",
-    "react-native-animatable": "^1.2.4",
-    "react-native-gifted-chat": "^0.3.0",
-    "react-native-movable-view": "^1.0.3",
-    "react-native-image-picker": "^0.26.7",
-    "uuid": "^3.3.0"
-  },
-  "deprecated": false,
+  "name": "react-native-chatio",
+  "version": "1.0.12",
   "description": "React Native component to integrate your application with Chat.io chat widget.",
-  "homepage": "https://github.com/livechat/react-native-chatio#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livechat/react-native-chatio.git"
+  },
   "keywords": [
     "react-native",
     "react",
@@ -45,19 +17,22 @@
     "chatio",
     "livechat"
   ],
+  "author": "Venits",
   "license": "MIT",
-  "main": "index.js",
-  "name": "react-native-chatio",
+  "bugs": {
+    "url": "https://github.com/livechat/react-native-chatio/issues"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/livechat/react-native-chatio.git"
+  "dependencies": {
+    "@livechat/chat.io-customer-sdk": "^0.7.0",
+    "react-native-animatable": "^1.2.4",
+    "react-native-gifted-chat": "^0.3.0",
+    "react-native-movable-view": "^1.0.3",
+    "react-native-image-picker": "^0.26.7",
+    "uuid": "^3.1.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "1.0.12"
+  "homepage": "https://github.com/livechat/react-native-chatio#readme"
 }

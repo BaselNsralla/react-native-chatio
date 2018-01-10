@@ -109,6 +109,34 @@ For example, if you want `onPressAvatar` to show agent's details, you can do it 
 
 You can find all props in the official [react-native-gifted-chat documentation](https://github.com/FaridSafi/react-native-gifted-chat).
 
+#### Send Images
+
+To be able to send messages you need to run ```javascript react-native link``` to link react-native-image-picker,
+then you need to give your app permission to access the library and camera.
+You can find the complete guide here
+ [react-native-gifted-chat documentation](https://github.com/react-community/react-native-image-picker)
+
+We need to have a custom action component which opens the gallery when clicked.
+Add the renderActions prop to the ChatIO component, and pass the given props to your custom action component
+
+```javascript 
+     <ChatIO
+       clientId="YOUR_CLIENT_ID"
+       redirectUri="YOUR_REDIRECT_URI"
+       license={YOUR_LICENSE}
+       renderActions = {(givenProps) => <YourCustomComponent  {...givenProps}/>}
+     />
+ ```
+ 
+The given props will hold a function called onPressActionButton, this needs to be called when you click your action button.
+
+```javascript
+    <TouchableOpacity style={styles.button} onPress={this.props.onPressActionButton}>
+       <Image style={styles.image} source={require('./YOUR_IMAGE.png')}/>
+    </TouchableOpacity>
+```
+
+Now picking an image will send it to chatIO.
 
 ### Methods
 
